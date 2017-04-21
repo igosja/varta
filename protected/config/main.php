@@ -11,13 +11,15 @@ return array(
     ),
     'components' => array(
         'urlManager' => array(
+            'class'=>'application.components.UrlManager',
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
+                '<language>' => 'index/index',
+                '<language>/<controller>/<action>/<id>' => '<controller>/<action>',
+                '<language>/<controller>/<action>' => '<controller>/<action>',
+                '<language>/<controller>' => '<controller>/index',
                 '' => 'index/index',
-                '<controller>/<action>/<id>' => '<controller>/<action>',
-                '<controller>/<action>' => '<controller>/<action>',
-                '<controller>' => '<controller>/index',
                 '<module>/<controller>/<action>/<id>' => '<module>/<controller>/<action>',
                 '<module>/<controller>/<action>' => '<module>/<controller>/<action>',
                 '<module>/<controller>' => '<module>/<controller>',
@@ -30,6 +32,9 @@ return array(
             'username' => 'igosja_varta',
             'password' => '&WKWp@*{',
             'charset' => 'utf8',
+        ),
+        'messages'=>array(
+            'class'=>'CDbMessageSource',
         ),
     ),
     'modules' => array(

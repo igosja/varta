@@ -54,6 +54,7 @@
                 </div>
             </div>
             <nav>
+                <?= CHtml::link(Yii::t('views.layout.main', 'link-about-us'), array('about/index'), array('class' => 'nav-link')); ?>
                 <a href="javascript:;" class="nav-link">Про нас</a>
                 <a href="javascript:;" class="nav-link">Послуги</a>
                 <a href="javascript:;" class="nav-link">Портфоліо</a>
