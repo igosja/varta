@@ -6,7 +6,7 @@ class Login extends CActiveRecord
 
     public function tableName()
     {
-        return 'admin';
+        return 'user';
     }
 
     public function rules()

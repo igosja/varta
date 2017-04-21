@@ -5,12 +5,10 @@ return array(
     'language' => 'ru',
     'sourceLanguage' => 'ru',
     'timeZone' => 'UTC',
-
     'import' => array(
         'application.models.*',
         'application.components.*',
     ),
-
     'components' => array(
         'urlManager' => array(
             'urlFormat' => 'path',
@@ -26,16 +24,14 @@ return array(
                 '<module>' => '<module>/index',
             ),
         ),
-
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=',
+            'connectionString' => 'mysql:host=localhost;dbname=igosja_varta',
             'emulatePrepare' => true,
-            'username' => '',
-            'password' => '',
+            'username' => 'igosja_varta',
+            'password' => '&WKWp@*{',
             'charset' => 'utf8',
         ),
     ),
-
     'modules' => array(
         'admin',
         'gii' => array(

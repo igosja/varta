@@ -8,6 +8,7 @@
     <script src="/js/jquery.js"></script>
     <title>Административный раздел</title>
     <link href="/css/admin.css" rel="stylesheet">
+    <link href="/css/bootstrap-toggle.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -58,6 +59,9 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <?= CHtml::link('Языки', array('language/index')); ?>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -66,8 +70,10 @@
         <?= $content; ?>
     </div>
 </div>
+<script src="/js/ckeditor/ckeditor.js"></script>
+<script src="/js/bootstrap-toggle.min.js"></script>
 <script src="/js/rowsorter.js"></script>
 <script src="/js/admin.min.js"></script>
-<script src="/js/ckeditor/ckeditor.js"></script>
+<script src="/js/admin.js"></script>
 </body>
 </html>
