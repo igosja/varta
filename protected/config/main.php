@@ -11,7 +11,7 @@ return array(
     ),
     'components' => array(
         'urlManager' => array(
-            'class'=>'application.components.UrlManager',
+            'class' => 'application.components.UrlManager',
             'urlFormat' => 'path',
             'showScriptName' => false,
             'rules' => array(
@@ -47,8 +47,13 @@ return array(
             'password' => '&WKWp@*{',
             'charset' => 'utf8',
         ),
-        'messages'=>array(
-            'class'=>'CDbMessageSource',
+        'messages' => array(
+            'class' => 'CDbMessageSource',
+            'cacheID' => 'cache',
+            'cachingDuration' => 43200,
+            'connectionID' => 'db',
+            'sourceMessageTable' => 'i18n_source_messages',
+            'translatedMessageTable' => 'i18n_translated_messages',
         ),
     ),
     'modules' => array(
