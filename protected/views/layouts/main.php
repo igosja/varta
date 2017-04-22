@@ -22,12 +22,9 @@
     <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/libs.css">
     <link rel="stylesheet" href="/css/main.css">
-
-    <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-    <script src="/js/vendor/libs.js"></script>
-    <script src="/js/main.js"></script>
+    <?php if ('project' == $this->uniqueid) { ?>
+        <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+    <?php } ?>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -55,10 +52,9 @@
             </div>
             <nav>
                 <?= CHtml::link(Yii::t('views.layout.main', 'link-about-us'), array('about/index'), array('class' => 'nav-link')); ?>
-                <a href="javascript:;" class="nav-link">Про нас</a>
-                <a href="javascript:;" class="nav-link">Послуги</a>
-                <a href="javascript:;" class="nav-link">Портфоліо</a>
-                <a href="javascript:;" class="nav-link">Контакти</a>
+                <?= CHtml::link(Yii::t('views.layout.main', 'link-service'), array('service/index'), array('class' => 'nav-link')); ?>
+                <?= CHtml::link(Yii::t('views.layout.main', 'link-portfolio'), array('portfolio/index'), array('class' => 'nav-link')); ?>
+                <?= CHtml::link(Yii::t('views.layout.main', 'link-contacts'), array('contact/index'), array('class' => 'nav-link')); ?>
             </nav>
         </div>
     </header>
@@ -128,5 +124,16 @@
         </div>
     </div>
 </section>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="/js/vendor/libs.js"></script>
+<script src="/js/main.js"></script>
+<?php if ('contact' == $this->uniqueid) { ?>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&language=ru"></script>
+<?php } ?>
+<?php if ('project' == $this->uniqueid) { ?>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+<?php } ?>
 </body>
 </html>

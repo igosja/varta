@@ -5,7 +5,7 @@ function initialize() {
 	center: myLatlng
   }
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-	var image = 'img/map-icon.png';
+	var image = '/img/map-icon.png';
 	var marker = new google.maps.Marker({
 		position: myLatlng,
 		map: map,
