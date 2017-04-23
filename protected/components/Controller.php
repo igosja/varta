@@ -25,9 +25,6 @@ class Controller extends CController
             $language = Language::model()->find(array('select' => array('code'), 'order' => '`order`'));
             Yii::app()->language = $language->code;
         }
-        print '<pre>';
-        print_r(Yii::app()->language);
-        exit;
         $clientScript = Yii::app()->getClientScript();
         $clientScript->scriptMap = array(
             'jquery.js' => false,
