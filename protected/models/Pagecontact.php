@@ -13,8 +13,7 @@ class PageContact extends CActiveRecord
             array(
                 'address_1_ru, address_1_ua, address_2_ru, address_2_ua, address_3_ru, address_3_ua,
                 shedule_1_ru, shedule_1_ua, shedule_2_ru, shedule_2_ua, shedule_3_ru, shedule_3_ua,
-                telephone_1, telephone_2,
-                h1_ru, h1_ua, seo_title_ru, seo_title_ua',
+                telephone_1, telephone_2, h1_ru, h1_ua, seo_title_ru, seo_title_ua',
                 'length', 'max' => 255),
             array('email', 'email'),
             array('facebook, instagram, pinterest, vk', 'url'),
