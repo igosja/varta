@@ -26,7 +26,7 @@ class Controller extends CController
             Yii::app()->language = $language->code;
         }
         print '<pre>';
-        print_r($language);
+        print_r(Yii::app()->language);
         exit;
         $clientScript = Yii::app()->getClientScript();
         $clientScript->scriptMap = array(
