@@ -4,7 +4,7 @@
         <h1 class="m-title"><?= $o_page['h1_' . Yii::app()->language]; ?></h1>
         <div class="b-portfolio__menu">
             <?= CHtml::link(
-                'Все',
+                Yii::t('views.portfolio.index', 'all'),
                 array('portfolio/index'),
                 array('class' => 'b-portfolio__menu__i ' . (!Yii::app()->request->getQuery('id') ? 'active' : ''))
             ); ?>

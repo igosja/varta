@@ -25,26 +25,6 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <span class="badge">123</span>
-                    <i class="fa fa-envelope fa-fw"></i>
-                    <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="javascript:;">
-                            <span class="badge">123</span> Сообщения
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="javascript:;">
-                            <span class="badge">123</span> Сообщения
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
                 <?= CHtml::link('<i class="fa fa-sign-out fa-fw"></i>', array('/site/logout')); ?>
             </li>
         </ul>
