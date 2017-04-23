@@ -20,13 +20,6 @@
         )); ?>
         <table class="table table-striped table-bordered table-hover">
             <tr>
-                <td class="col-lg-3"><?= $form->labelEx($model, 'code'); ?></td>
-                <td>
-                    <?= $form->textField($model, 'code', array('class' => 'form-control')); ?>
-                    <?= $form->error($model, 'code'); ?>
-                </td>
-            </tr>
-            <tr>
                 <td class="col-lg-3"><?= $form->labelEx($model, 'name'); ?></td>
                 <td>
                     <?= $form->textField($model, 'name', array('class' => 'form-control')); ?>

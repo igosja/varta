@@ -2,17 +2,18 @@
 
 class ImageIgosja
 {
+    /**
+     * Resize изображения v 3.2.
+     *
+     * Пример использования - <img src="<?= ImageIgosja::resize($image_id, $width, $height); ?>">
+     *
+     * @param $image_id int Id изображения в БД
+     * @param $width int Ширина нового файла
+     * @param $height int Высота нового файла
+     * @param $cut bool Обрезать лишнее или вставить белые полосы
+     * @return string адрес jpg картинки
+     */
     public static function resize($image_id, $width, $height, $cut = 1)
-        //Версия 3.2
-        //
-        //Принимает параметры
-        //'image_id' => Id изображения в БД
-        //'width' => Ширина нового файла
-        //'height' => Высота нового файла
-        //'cut' => Обрезать лишнее или вставить белые полосы, по умолчанию обрезать
-        //
-        //Возвращает адрес jpg картинки
-        //Пример использования - <img src='?=ImageIgosja::resize($image_id, $width, $height)?'>
     {
         $sizeh = (int)$height;
         $sizew = (int)$width;
@@ -51,12 +52,12 @@ class ImageIgosja
                     }
                 }
 
-                if ($image_info[2] == IMAGETYPE_JPEG) {
-                    $src = imagecreatefromjpeg($image_url);
-                } elseif ($image_info[2] == IMAGETYPE_GIF) {
+                if ($image_info[2] == IMAGETYPE_GIF) {
                     $src = imagecreatefromgif($image_url);
                 } elseif ($image_info[2] == IMAGETYPE_PNG) {
                     $src = imagecreatefrompng($image_url);
+                } else {
+                    $src = imagecreatefromjpeg($image_url);
                 }
 
                 $im = imagecreatetruecolor($sizew, $sizeh);
@@ -137,10 +138,14 @@ class ImageIgosja
 
         $file_url = $upload_dir . '/' . $file_name;
 
-        if (copy($file, $file_url)) {
-            chmod($file_url, 0777);
-        }
+        if (!file_exists($file_url)) {
+            if (copy($file, $file_url)) {
+                chmod($file_url, 0777);
+            }
 
-        return $dir . '/' . $file_name;
+            return $dir . '/' . $file_name;
+        } else {
+            return self::put_file($file, $ext);
+        }
     }
 }

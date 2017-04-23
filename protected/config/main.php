@@ -54,6 +54,7 @@ return array(
             'connectionID' => 'db',
             'sourceMessageTable' => 'i18n_source_messages',
             'translatedMessageTable' => 'i18n_translated_messages',
+            'forceTranslation' => true,
         ),
     ),
     'modules' => array(

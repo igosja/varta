@@ -24,7 +24,6 @@ class LanguageController extends AController
     public function actionUpdate($id = 0)
     {
         $this->h1 = 'Редактирование языка';
-        $id = (int)$id;
         if (0 == $id) {
             $model = $this->getModel();
         } else {
@@ -50,12 +49,15 @@ class LanguageController extends AController
 
     public function actionView($id)
     {
-        $id = (int)$id;
         $model = $this->getModel()->findByPk($id);
         if (null === $model) {
             throw new CHttpException(404, 'Страница не найдена.');
         }
         $this->h1 = $model->name;
+        $this->breadcrumbs = array(
+            $this->title => array('index'),
+            $model->name,
+        );
         $this->render('view', array('model' => $model));
     }
 
@@ -68,7 +70,6 @@ class LanguageController extends AController
 
     public function actionStatus($id)
     {
-        $id = (int)$id;
         $model = $this->getModel()->findByPk($id);
         if (null === $model) {
             throw new CHttpException(404, 'Страница не найдена.');
@@ -79,7 +80,6 @@ class LanguageController extends AController
 
     public function actionOrder($id)
     {
-        $id = (int)$id;
         $order_old = $_GET['order_old'];
         $order_new = $_GET['order_new'];
         $this->getModel()->updateByPk($id, array('order' => $order_new));

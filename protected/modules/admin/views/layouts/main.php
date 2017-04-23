@@ -55,18 +55,71 @@
                         <a href="javascript:;">Главная страница<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="javascript:;">Главная страница</a>
+                                <?= CHtml::link('Тексты и SEO', array('pagemain/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Слайдер', array('slide/index')); ?>
                             </li>
                         </ul>
                     </li>
                     <li>
+                        <a href="javascript:;">О нас<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <?= CHtml::link('Тексты и SEO', array('pageabout/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Наша команда', array('team/index')); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Услуги<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <?= CHtml::link('Тексты и SEO', array('pageservice/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Услуги', array('service/index')); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;">Потрфолио<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <?= CHtml::link('Тексты и SEO', array('pageportfolio/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Категории', array('portfolio/index')); ?>
+                            </li>
+                            <li>
+                                <?= CHtml::link('Проекты', array('project/index')); ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <?= CHtml::link('Контакты', array('pagecontact/index')); ?>
+                    </li>
+                    <li>
                         <?= CHtml::link('Языки', array('language/index')); ?>
+                    </li>
+                    <li>
+                        <?= CHtml::link('Переводы', array('translate/index')); ?>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <div id="page-wrapper">
+        <?php $this->widget('zii.widgets.CBreadcrumbs', array(
+            'separator' => '',
+            'activeLinkTemplate' => '<li><a href="{url}">{label}</a></li>',
+            'inactiveLinkTemplate' => '<li class="active">{label}</li>',
+            'tagName' => 'ul',
+            'htmlOptions' => array('class' => 'breadcrumb'),
+            'links' => $this->breadcrumbs,
+        )); ?>
         <?= $content; ?>
     </div>
 </div>

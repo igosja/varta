@@ -12,9 +12,12 @@ class m170421_110710_language extends CDbMigration
             'status' => 'tinyint(1) default 1',
         ));
 
+        $this->createIndex('order', 'language', 'order');
+        $this->createIndex('status', 'language', 'status');
+
         $this->insertMultiple('language', array(
-            array('code' => 'ua', 'name' => 'Укр', 'order' => 1),
-            array('code' => 'ru', 'name' => 'Рус', 'order' => 2),
+            array('code' => 'ua', 'name' => 'Укр', 'order' => 0),
+            array('code' => 'ru', 'name' => 'Рус', 'order' => 1),
         ));
     }
 

@@ -11,6 +11,8 @@ class m170421_112010_user extends CDbMigration
             'userrole_id' => 'tinyint(1) default 3',
         ));
 
+        $this->createIndex('userrole_id', 'user', 'userrole_id');
+
         $this->insert('user', array(
             'username' => 'admin',
             'password' => '3679163934587a4abafd80a44d0e318a',

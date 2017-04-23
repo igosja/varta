@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>        +<html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js homepage"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>        +
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js homepage"> <!--<![endif]-->
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?= $this->seo_title; ?></title>
     <meta name="description" content="<?= $this->seo_description; ?>">
     <meta name="keywords" content="<?= $this->seo_keywords; ?>">
-    <meta property="og:title" content="<?= $this->seo_title; ?>" />
-    <meta property="og:description" content="<?= $this->seo_description; ?>" />
-    <meta property="og:type" content="text" />
-    <meta property="og:image" content="http://<?= $_SERVER['HTTP_HOST'] . $this->og_image; ?>" />
-    <meta property="og:url" content="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>" />
-    <meta http-equiv="content-language" content="ru" />
+    <meta property="og:title" content="<?= $this->seo_title; ?>"/>
+    <meta property="og:description" content="<?= $this->seo_description; ?>"/>
+    <meta property="og:type" content="text"/>
+    <meta property="og:image" content="http://<?= $_SERVER['HTTP_HOST'] . $this->og_image; ?>"/>
+    <meta property="og:url" content="http://<?= $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>"/>
+    <meta http-equiv="content-language" content="ru"/>
     <meta name="viewport" content="width=1240">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,900&amp;subset=cyrillic-ext' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,900&amp;subset=cyrillic-ext' rel='stylesheet'
+          type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <link rel="stylesheet" href="/css/normalize.min.css">
     <link rel="stylesheet" href="/css/libs.css">
@@ -28,7 +35,11 @@
 </head>
 <body>
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a target="_blank" rel="nofollow" href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browsehappy">
+    You are using an <strong>outdated</strong> browser. Please
+    <a target="_blank" rel="nofollow" href="http://browsehappy.com/">upgrade your browser</a>
+    to improve your experience.
+</p>
 <![endif]-->
 <div class="sitewrap">
     <header class="clearfix">
@@ -36,25 +47,56 @@
             <div class="header-top clearfix">
                 <?= CHtml::link('<img src="/img/logo.png" alt="">', array('index/index'), array('class' => 'logo')); ?>
                 <div class="header-phones">
-                    <a href="tel:+380442415556"><span>+38</span> 044 241 55 56</a>
-                    <a href="tel:+380507652354"><span>+38</span> 050 765 23 54</a>
+                    <a href="tel:<?= str_replace(' ', '', $this->contact->telephone_1); ?>">
+                        <?= $this->contact->telephone_1; ?>
+                    </a>
+                    <a href="tel:<?= str_replace(' ', '', $this->contact->telephone_2); ?>">
+                        <?= $this->contact->telephone_2; ?>
+                    </a>
                 </div>
                 <div class="header-top__right clearfix">
-                    <div class="header-email">E-mail: <a href="mailto:vartist@ukr.net">vartist@ukr.net</a></div>
-                    <a href="javascript:;" data-selector="form-order" class="header-offer overlayElementTrigger">Замовити послугу</a>
-                    <div class="jqui-lang">
-                        <select name="" id="">
-                            <option value=""  selected="">Укр</option>
-                            <option value="" >Рус</option>
-                        </select>
+                    <div class="header-email">
+                        E-mail:
+                        <a href="mailto:<?= $this->contact->email; ?>"><?= $this->contact->email; ?></a>
                     </div>
+                    <a href="javascript:;" data-selector="form-order" class="header-offer overlayElementTrigger">
+                        <?= Yii::t('views.layout.main', 'link-order-service'); ?>
+                    </a>
+                    <form method="post" id="language-form" class="jqui-lang">
+                        <select name="language" id="language-select">
+                            <?php foreach ($this->a_language as $item) { ?>
+                                <option
+                                        value="<?= $item->code; ?>"
+                                        <?php if (Yii::app()->language == $item->code) { ?>selected<?php } ?>
+                                >
+                                    <?= $item->name; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </form>
                 </div>
             </div>
             <nav>
-                <?= CHtml::link(Yii::t('views.layout.main', 'link-about-us'), array('about/index'), array('class' => 'nav-link')); ?>
-                <?= CHtml::link(Yii::t('views.layout.main', 'link-service'), array('service/index'), array('class' => 'nav-link')); ?>
-                <?= CHtml::link(Yii::t('views.layout.main', 'link-portfolio'), array('portfolio/index'), array('class' => 'nav-link')); ?>
-                <?= CHtml::link(Yii::t('views.layout.main', 'link-contacts'), array('contact/index'), array('class' => 'nav-link')); ?>
+                <?= CHtml::link(
+                    Yii::t('views.layouts.main', 'link-about-us'),
+                    array('about/index'),
+                    array('class' => 'nav-link')
+                ); ?>
+                <?= CHtml::link(
+                    Yii::t('views.layouts.main', 'link-service'),
+                    array('service/index'),
+                    array('class' => 'nav-link')
+                ); ?>
+                <?= CHtml::link(
+                    Yii::t('views.layouts.main', 'link-portfolio'),
+                    array('portfolio/index'),
+                    array('class' => 'nav-link')
+                ); ?>
+                <?= CHtml::link(
+                    Yii::t('views.layouts.main', 'link-contacts'),
+                    array('contact/index'),
+                    array('class' => 'nav-link')
+                ); ?>
             </nav>
         </div>
     </header>
@@ -65,26 +107,43 @@
     <div class="wrap">
         <div class="footer-top clearfix">
             <div class="footer-soc clearfix">
-                <a href="javascript:;" class="footer-soc__facebook"></a>
-                <a href="javascript:;" class="footer-soc__insta"></a>
-                <a href="javascript:;" class="footer-soc__vk"></a>
-                <a href="javascript:;" class="footer-soc__pint"></a>
+                <?php if ($this->contact->facebook) { ?>
+                    <a href="<?= $this->contact->facebook; ?>" class="footer-soc__facebook" target="_blank"></a>
+                <?php } ?>
+                <?php if ($this->contact->instagram) { ?>
+                    <a href="<?= $this->contact->instagram; ?>" class="footer-soc__insta" target="_blank"></a>
+                <?php } ?>
+                <?php if ($this->contact->vk) { ?>
+                    <a href="<?= $this->contact->vk; ?>" class="footer-soc__vk" target="_blank"></a>
+                <?php } ?>
+                <?php if ($this->contact->pinterest) { ?>
+                    <a href="<?= $this->contact->pinterest; ?>" class="footer-soc__pint" target="_blank"></a>
+                <?php } ?>
             </div>
             <div class="footer-contacts clearfix">
                 <div class="footer-phones clearfix">
-                    <a href="tel:+38 044 241 55 56"><span>+38</span> 044 241 55 56</a>
-                    <a href="tel:+38 050 765 23 54"><span>+38</span> 050 765 23 54</a>
+                    <a href="tel:<?= str_replace(' ', '', $this->contact->telephone_1); ?>">
+                        <?= $this->contact->telephone_1; ?>
+                    </a>
+                    <a href="tel:<?= str_replace(' ', '', $this->contact->telephone_2); ?>">
+                        <?= $this->contact->telephone_2; ?>
+                    </a>
                 </div>
-                <a href="mailto:vartist@ukr.net" class="footer-mail">vartist@ukr.net</a>
+                <a href="mailto:<?= $this->contact->email; ?>" class="footer-mail">
+                    <?= $this->contact->email; ?>
+                </a>
             </div>
-            <a href="javascript:;" class="to-top">Вверх</a>
+            <a href="javascript:;" class="to-top"><?= Yii::t('views.layouts.main', 'up'); ?></a>
         </div>
         <div class="footer-info clearfix">
-            <div class="footer-info__copy">© 2014—2017  «Вартість» проектне бюро, строительство и архитектура</div>
+            <div class="footer-info__copy">
+                © 2014—<?= date('Y'); ?>
+                <?= Yii::t('views.layouts.main', 'copyright'); ?>
+            </div>
             <div class="footer-info__maks">
                 <a href="javascript:;" class="maks-logo">Макс</a>
                 <div>
-                    <a href="tel:067-96-255-26">067-96-255-26</a><br />
+                    <a href="tel:067-96-255-26">067-96-255-26</a><br/>
                     <a href="mailto:panditmaximus@gmail.com">panditmaximus@gmail.com</a>
                 </div>
             </div>
@@ -96,39 +155,69 @@
     <div class="wrap">
         <div class="of-form form-order clearfix">
             <a href="javascript:;" class="of-close"></a href="">
-            <form>
-                <div class="of-form__title">Замовити послуги</div>
-                <div class="of-wrap clearfix">
-                    <div class="need"><input type="text" class="of-input of-input_name" placeholder="Ваше имя" required /></div>
-                    <div class="need"><input type="tel" class="of-input of-input_phone phone_mask" placeholder="Телефон" required /></div>
-                    <input type="email" class="of-input of-input_email" placeholder="E-mail" required=" " />
-                    <div class="jqui-select need">
-                        <select name="" id="">
-                            <option value=""  selected="">Послуга</option>
-                            <option value="" >Послуга 1</option>
-                        </select>
-                    </div>
-                    <textarea placeholder="Комментарий" class="of-form__textarea"></textarea>
-                    <div class="of-form__text"><span></span>Поля обов’язкові для заповнення</div>
-                    <a href="javascript:;" class="of-submit of-submit-form">Замовити</a>
+            <?php $form = $this->beginWidget('CActiveForm', array(
+                'enableAjaxValidation' => false,
+                'enableClientValidation' => true,
+            )); ?>
+            <div class="of-form__title"><?= Yii::t('views.layouts.main', 'form-title'); ?></div>
+            <div class="of-wrap clearfix">
+                <div class="need">
+                    <?= $form->textField($this->model, 'name', array(
+                        'class' => 'of-input of-input_name',
+                        'placeholder' => Yii::t('form.order', 'name')
+                    )); ?>
+                    <?= $form->error($this->model, 'name'); ?>
                 </div>
-            </form>
+                <div class="need">
+                    <?= $form->textField($this->model, 'telephone', array(
+                        'class' => 'of-input of-input_phone phone_mask',
+                        'placeholder' => Yii::t('form.order', 'telephone')
+                    )); ?>
+                    <?= $form->error($this->model, 'telephone'); ?>
+                </div>
+                <div>
+                    <?= $form->textField($this->model, 'email', array(
+                        'class' => 'of-input of-input_email',
+                        'placeholder' => Yii::t('form.order', 'email')
+                    )); ?>
+                    <?= $form->error($this->model, 'email'); ?>
+                </div>
+                <div class="jqui-select need">
+                    <?= $form->dropDownList($this->model, 'service', CHtml::listData(
+                        Service::model()->findAllByAttributes(array('status' => 1), array('order' => '`order`')),
+                        'h1_ru',
+                        'h1_' . Yii::app()->language
+                    )); ?>
+                    <?= $form->error($this->model, 'service'); ?>
+                </div>
+                <?= $form->textarea($this->model, 'text', array(
+                    'class' => 'of-form__textarea',
+                    'placeholder' => Yii::t('form.order', 'text')
+                )); ?>
+                <?= $form->error($this->model, 'text'); ?>
+                <div class="of-form__text"><span></span><?= Yii::t('form', 'required'); ?></div>
+                <a href="javascript:;" class="of-submit of-submit-form">
+                    <?= Yii::t('views.layouts.main', 'form-send'); ?>
+                </a>
+            </div>
+            <?php $this->endWidget(); ?>
         </div>
         <div class="of-form form-thanks clearfix">
             <a href="javascript:;" class="of-close"></a href="">
             <div class="of-form__thanks">
-                <span>Спасибо</span><br>
-                Я с Вами свяжусь<br>
-                ближайшим временем
+                <span><?= Yii::t('views.layouts.main', 'thanks'); ?></span><br>
+                <?= Yii::t('views.layouts.main', 'we-will-call'); ?>
             </div>
         </div>
     </div>
 </section>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<?php if (Yii::app()->user->hasFlash('form')) { ?>
+    <div id="form-success" style="display: none;"><?= Yii::app()->user->getFlash('form'); ?></div>
+<?php } ?>
 <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 <script src="/js/vendor/libs.js"></script>
 <script src="/js/main.js"></script>
+<script src="/js/site.js"></script>
 <?php if ('contact' == $this->uniqueid) { ?>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&language=ru"></script>
 <?php } ?>

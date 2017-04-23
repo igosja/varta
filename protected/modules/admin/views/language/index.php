@@ -9,28 +9,40 @@
     $columns = array(
         array(
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
+            'htmlOptions' => array('class' => 'text-center'),
+            'type' => 'raw',
+            'value' => function () {
+                return '<i class="fa fa-arrows-v sorter">';
+            },
+        ),
+        array(
+            'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
             'name' => 'id',
+            'sortable' => false,
         ),
         array(
             'name' => 'code',
+            'sortable' => false,
         ),
         array(
             'name' => 'name',
+            'sortable' => false,
         ),
         array(
             'filter' => false,
-            'name' => 'status',
             'headerHtmlOptions' => array('class' => 'col-lg-1, col-md-1, col-sm-1, col-xs-1'),
+            'name' => 'status',
+            'sortable' => false,
             'type' => 'raw',
-            'value' => function ($data) {
-                if (1 == $data->status) {
+            'value' => function ($model) {
+                if (1 == $model->status) {
                     $checked = 'checked';
                 } else {
                     $checked = '';
                 }
                 $input = '<input
                                 class="status"
-                                data-id="' . $data->id . '"
+                                data-id="' . $model->id . '"
                                 type="checkbox" ' . $checked . '
                                 data-toggle="toggle"
                                 data-size="mini"
@@ -49,7 +61,7 @@
         'afterAjaxUpdate' => 'function(id, data){CGridViewAfterAjax()}',
         'columns' => $columns,
         'dataProvider' => $model->search(),
-        'filter' => $model,
+//        'filter' => $model,
         'itemsCssClass' => 'table table-striped table-bordered sort-table',
         'htmlOptions' => array('data-controller' => $this->uniqueid),
         'pager' => array(
@@ -68,7 +80,6 @@
             'htmlOptions' => array('class' => 'pagination'),
         ),
         'pagerCssClass' => 'pager-css-class',
-        'rowCssClass' => array('sorter'),
         'rowHtmlOptionsExpression' => 'array("data-id" => $data->id, "data-controller" => "' . $this->uniqueid . '")',
         'summaryCssClass' => 'text-left',
         'summaryText' => 'Показаны записи <strong>{start}</strong>-<strong>{end}</strong> из <strong>{count}</strong>.',

@@ -1,31 +1,22 @@
 <section class="content">
     <div class="wrap usluga">
-        <div class="breadchambs">
-            <a href="javascript:;">Головна</a>
-            <span>Послуги</span>
-        </div>
-        <h1 class="m-title">Послуги</h1>
+        <?= $this->renderPartial('/include/bread'); ?>
+        <h1 class="m-title"><?= $o_page['h1_' . Yii::app()->language]; ?></h1>
         <div class="uslugi-b clearfix">
-            <?php for ($i=1; $i<=8; $i++) { ?>
+            <?php foreach ($a_service as $item) { ?>
                 <?= CHtml::link(
-                    '<img src="/img/uslugi-page/uslugi-' . $i . '.jpg" alt="">
+                    '<img src="' . ImageIgosja::resize($item->image_id, 290, 290) . '" alt="">
                     <div class="uslugi-b__i__in">
-                        <div class="uslugi-b__i__title">Проектування</div>
-                        <div class="uslugi-b__i__btn">Детальніше</div>
+                        <div class="uslugi-b__i__title">' . $item['h1_' . Yii::app()->language] . '</div>
+                        <div class="uslugi-b__i__btn">' . Yii::t('views.service.index', 'read-mode') . '</div>
                     </div>',
-                    array('service/view', 'id' => $i),
+                    array('service/view', 'id' => $item->url),
                     array('class' => 'uslugi-b__i')
                 ); ?>
             <?php } ?>
         </div>
         <div class="centered">
-            <p>
-                Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <p>
-                Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
-            </p>
-            <p class="grey">“Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio”</p>
+            <?= $o_page['text_' . Yii::app()->language]; ?>
         </div>
     </div>
 </section>

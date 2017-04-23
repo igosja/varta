@@ -1,0 +1,22 @@
+<?php
+
+class m170422_123503_team extends CDbMigration
+{
+    public function up()
+    {
+        $this->createTable('team', array(
+            'id' => 'pk',
+            'image_id' => 'int(11) DEFAULT 0',
+            'order' => 'int(11) DEFAULT 0',
+            'status' => 'tinyint(1) DEFAULT 1',
+        ));
+
+        $this->createIndex('order', 'team', 'order');
+        $this->createIndex('status', 'team', 'status');
+    }
+
+    public function down()
+    {
+        $this->dropTable('team');
+    }
+}
