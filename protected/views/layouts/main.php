@@ -195,7 +195,7 @@
                     'placeholder' => Yii::t('form.order', 'text')
                 )); ?>
                 <?= $form->error($this->model, 'text'); ?>
-                <div class="of-form__text"><span></span><?= Yii::t('form', 'required'); ?></div>
+                <div class="of-form__text"><span></span><?= Yii::t('form', 'form-required'); ?></div>
                 <a href="javascript:;" class="of-submit of-submit-form">
                     <?= Yii::t('views.layouts.main', 'form-send'); ?>
                 </a>
