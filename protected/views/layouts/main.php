@@ -60,7 +60,7 @@
                         <a href="mailto:<?= $this->contact->email; ?>"><?= $this->contact->email; ?></a>
                     </div>
                     <a href="javascript:;" data-selector="form-order" class="header-offer overlayElementTrigger">
-                        <?= Yii::t('views.layout.main', 'link-order-service'); ?>
+                        <?= Yii::t('views.layouts.main', 'link-order-service'); ?>
                     </a>
                     <form method="post" id="language-form" class="jqui-lang">
                         <select name="language" id="language-select">
