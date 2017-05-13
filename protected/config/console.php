@@ -4,10 +4,10 @@ return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'components' => array(
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=igosja_varta',
+            'connectionString' => 'mysql:host=vartist.mysql.ukraine.com.ua;dbname=vartist_db',
             'emulatePrepare' => true,
-            'username' => 'igosja_varta',
-            'password' => '&WKWp@*{',
+            'username' => 'vartist_db',
+            'password' => 'ZkspCZFZ',
             'charset' => 'utf8',
         ),
         'messages' => array(
